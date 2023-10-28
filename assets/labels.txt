@@ -1,2 +1,10 @@
-Dog
-Cat
+0 Alaxan
+1 Bactidol
+2 Bioflu
+3 Biogesic
+4 DayZinc
+5 Decolgen
+6 Fish Oil
+7 Kremil S
+8 Medicol
+9 Neozep
