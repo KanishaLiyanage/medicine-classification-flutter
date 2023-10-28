@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'screens/home.dart';
+import 'package:medicine_classification_app/screens/MedDesc.dart';
+import 'screens/Home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +20,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: HomeScreen(),
+      routes: {
+        '/MedDesc': (context) => MedDescScreen(),
+      },
     );
   }
 }

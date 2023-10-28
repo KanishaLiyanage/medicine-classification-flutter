@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:medicine_classification_app/widgets/custom_btn.dart';
+import 'package:medicine_classification_app/screens/MedDesc.dart';
+import 'package:medicine_classification_app/widgets/CustomBtn.dart';
 import 'package:tflite/tflite.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -104,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       top: 0.06 * size.height,
                       bottom: 0.06 * size.height,
                     ),
-                    child: Image.asset('assets/home_screen/meds.png'),
+                    child: Image.asset('assets/images/meds.png'),
                   )
                 : Container(
                     child: Column(
@@ -119,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         SizedBox(height: 0.02 * size.height),
                         Text(
-                          '${_output[0]["label"]}',
+                          '${_output[0]["label"].split(" ")[1]}',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -148,6 +149,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed('/MedDesc');
+        },
+        child: Icon(
+          Icons.navigate_next_rounded,
+        ),
       ),
     );
   }
