@@ -33,7 +33,6 @@ class _MedDescScreenState extends State<MedDescScreen> {
     String imageName =
         (selectedDrug?.medName ?? "").replaceAll(" ", "").toLowerCase();
 
-    // Check for both PNG and JPG extensions
     String imgPath = 'assets/images/$imageName.png';
 
     return Scaffold(
@@ -45,7 +44,6 @@ class _MedDescScreenState extends State<MedDescScreen> {
         child: Column(
           children: [
             SizedBox(height: 0.02 * size.height),
-            // Try PNG image first, and if not found, use JPG
             MedImg(imgPath: imgPath),
             SizedBox(height: 0.02 * size.height),
             MedNamewithClass(
