@@ -23,7 +23,7 @@ class CustomAppBar extends StatelessWidget {
       ),
       leading: Padding(
         padding: EdgeInsets.only(
-          top: 0.013 * size.height,
+          top: 0.01 * size.height,
           left: 0.015 * size.height,
         ),
         child: IconButton(

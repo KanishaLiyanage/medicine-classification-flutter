@@ -13,9 +13,9 @@ class MedImg extends StatelessWidget {
       children: [
         Container(
           height: 0.25 * size.height,
-          width: 0.4 * size.width,
+          width: 0.5 * size.width,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(0.25 * size.height),
+            //borderRadius: BorderRadius.circular(0.25 * size.height),
             image: DecorationImage(
               image: AssetImage(imgPath), // Use the provided image path
               fit: BoxFit.cover,
