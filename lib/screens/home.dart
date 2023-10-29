@@ -81,11 +81,70 @@ class _HomeScreenState extends State<HomeScreen> {
     classifyImage(_image);
   }
 
+  aboutDrug() async {
+    String labelText = await _output.isNotEmpty
+        ? _output[0]["label"].split(" ").sublist(1).join(" ")
+        : "";
+
+    if (labelText == "Alaxan") {
+      Navigator.of(context).pushNamed(
+        '/MedDesc',
+        arguments: {'drugName': "Alaxan", 'drugIndex': 0},
+      );
+    } else if (labelText == "Bactidol") {
+      Navigator.of(context).pushNamed(
+        '/MedDesc',
+        arguments: {'drugName': "Bactidol", 'drugIndex': 1},
+      );
+    } else if (labelText == "Bioflu") {
+      Navigator.of(context).pushNamed(
+        '/MedDesc',
+        arguments: {'drugName': "Bioflu", 'drugIndex': 2},
+      );
+    } else if (labelText == "Biogesic") {
+      Navigator.of(context).pushNamed(
+        '/MedDesc',
+        arguments: {'drugName': "Biogesic", 'drugIndex': 3},
+      );
+    } else if (labelText == "DayZinc") {
+      Navigator.of(context).pushNamed(
+        '/MedDesc',
+        arguments: {'drugName': "DayZinc", 'drugIndex': 4},
+      );
+    } else if (labelText == "Decolgen") {
+      Navigator.of(context).pushNamed(
+        '/MedDesc',
+        arguments: {'drugName': "Decolgen", 'drugIndex': 5},
+      );
+    } else if (labelText == "Fish Oil") {
+      Navigator.of(context).pushNamed(
+        '/MedDesc',
+        arguments: {'drugName': "Fish Oil", 'drugIndex': 6},
+      );
+    } else if (labelText == "Kremil S") {
+      Navigator.of(context).pushNamed(
+        '/MedDesc',
+        arguments: {'drugName': "Kremil S", 'drugIndex': 7},
+      );
+    } else if (labelText == "Medicol") {
+      Navigator.of(context).pushNamed(
+        '/MedDesc',
+        arguments: {'drugName': "Medicol", 'drugIndex': 8},
+      );
+    } else if (labelText == "Neozep") {
+      Navigator.of(context).pushNamed(
+        '/MedDesc',
+        arguments: {'drugName': "Neozep", 'drugIndex': 9},
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    String labelText =
-        _output.isNotEmpty ? _output[0]["label"].split(" ")[1] : "";
+    String labelText = _output.isNotEmpty
+        ? _output[0]["label"].split(" ").sublist(1).join(" ")
+        : "";
 
     return Scaffold(
       appBar: PreferredSize(
@@ -102,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          backgroundColor: Colors.blue,
+          backgroundColor: Color(0xFF900000),
         ),
       ),
       body: SingleChildScrollView(
@@ -112,44 +171,48 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 0.05 * size.height),
             Center(
               child: _loading
-                  ? ImgBox(assetImage: 'assets/images/meds.png')
+                  ? Column(
+                      children: [
+                        ImgBox(assetImage: 'assets/images/meds.png'),
+                        SizedBox(height: 0.05 * size.height),
+                        CustomButton(
+                          btnFunc: PickFromCamera,
+                          text: "Take a photo",
+                        ),
+                        SizedBox(height: 0.02 * size.height),
+                        CustomButton(
+                          btnFunc: PickFromGallery,
+                          text: "Choose image from gallery",
+                        ),
+                      ],
+                    )
                   : Container(
                       child: Column(
                         children: [
                           ImgBox(fileImage: _image),
-                          SizedBox(height: 0.02 * size.height),
+                          SizedBox(height: 0.025 * size.height),
                           OutputText(labelText: labelText),
+                          SizedBox(height: 0.025 * size.height),
+                          CustomButton(
+                            btnFunc: aboutDrug,
+                            text: "About the drug",
+                          ),
+                          SizedBox(height: 0.02 * size.height),
+                          CustomButton(
+                            btnFunc: PickFromCamera,
+                            text: "Take another photo",
+                          ),
+                          SizedBox(height: 0.02 * size.height),
+                          CustomButton(
+                            btnFunc: PickFromGallery,
+                            text: "Check another drug from gallery",
+                          ),
                         ],
                       ),
                     ),
             ),
             SizedBox(height: 0.05 * size.height),
-            Container(
-              width: size.width,
-              child: Column(
-                children: [
-                  CustomButton(
-                    cameraFunc: PickFromCamera,
-                    text: "Take a photo",
-                  ),
-                  SizedBox(height: 0.02 * size.height),
-                  CustomButton(
-                    cameraFunc: PickFromGallery,
-                    text: "Choose image from gallery",
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 0.05 * size.height),
           ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushNamed('/MedDesc');
-        },
-        child: Icon(
-          Icons.navigate_next_rounded,
         ),
       ),
     );

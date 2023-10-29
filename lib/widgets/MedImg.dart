@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MedImg extends StatelessWidget {
-  var img;
+  final String imgPath;
 
-  MedImg({required this.img});
+  MedImg({required this.imgPath});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class MedImg extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(0.25 * size.height),
             image: DecorationImage(
-              image: AssetImage(img),
+              image: AssetImage(imgPath), // Use the provided image path
               fit: BoxFit.cover,
             ),
             boxShadow: [
@@ -29,7 +29,7 @@ class MedImg extends StatelessWidget {
               ),
             ],
           ),
-        )
+        ),
       ],
     );
   }
